@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandeja de Entrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h2 {
+            color: #4a90e2;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        li strong {
+            font-size: 1.1rem;
+            color: #4a90e2;
+        }
+
+        li span {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        li p {
+            margin: 10px 0 0;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        button {
+            font-size: 1rem;
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #4a90e2;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #357ab8;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            li {
+                padding: 10px;
+            }
+
+            button {
+                font-size: 0.9rem;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Bandeja de Entrada</h2>
+    <ul>
+        {% for message in messages %}
+        <li>
+            <strong>{{ message.sender.username }}</strong>
+            <span>{{ message.timestamp }}</span>
+            <p>{{ message.content }}</p>
+        </li>
+        {% empty %}
+        <li>No tienes mensajes nuevos.</li>
+        {% endfor %}
+    </ul>
+    <button onclick="window.history.back()">Volver</button>
+</body>
+</html>

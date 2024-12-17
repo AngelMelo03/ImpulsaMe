@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Docente Principal</title>
+</head>
+<body>
+    <h1>Bienvenido, {{ user.username }} (Docente)</h1>
+    <p>Esta es la página principal para docentes.</p>
+    <a href="{% url 'logout' %}">Cerrar sesión</a>
+</body>
+</html>

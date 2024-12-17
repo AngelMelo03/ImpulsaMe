@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profesores - {{ area }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #4a90e2;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        li {
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #4a90e2;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #357ab8;
+            transform: scale(1.05);
+        }
+
+        .button:active {
+            transform: scale(0.95);
+        }
+
+        .button-secondary {
+            background-color: #2ecc71;
+        }
+
+        .button-secondary:hover {
+            background-color: #27ae60;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .button {
+                font-size: 0.9rem;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Profesores en el área de {{ area }}</h1>
+    <ul>
+        {% for profesor in profesores %}
+        <li>
+            <div>
+                <strong>{{ profesor.cargo }}</strong><br>
+                Experiencia: {{ profesor.experiencia }}
+            </div>
+            <a href="{% url 'send_message' profesor.id %}" class="button">Mandar mensaje</a>
+        </li>
+        {% empty %}
+        <li>No hay profesores registrados en esta área.</li>
+        {% endfor %}
+    </ul>
+    <div class="container">
+        <a href="/usuarios/estudiante/" class="button button-secondary">Volver</a>
+    </div>
+</body>
+</html>

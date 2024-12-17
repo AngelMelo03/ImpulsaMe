@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+</head>
+<body>
+    <h1>Registro de Usuario</h1>
+    {% if not form %}
+        <p>Selecciona el tipo de usuario:</p>
+        <a href="?tipo_usuario=docente">Docente</a> | 
+        <a href="?tipo_usuario=estudiante">Estudiante</a>
+    {% else %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Registrarse</button>
+        </form>
+    {% endif %}
+</body>
+</html>
